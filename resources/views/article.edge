@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  {{ style('style') }}
+</head>
+<body>
+
+   <div class="container">
+    <div class="card" style="margin-top: 20px">
+        <div class="card-body">
+        <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Title</label>
+              <input id="title" name="title" type="text" class="form-control" placeholder="Enter title">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Body</label>
+              <textarea id="body" class="form-control" name="body" rows="3"></textarea>
+            </div>
+
+            <button id="submit" class="btn btn-primary">Add</button>
+          </form>
+      </div>
+    </div>
+
+    <div id="list-article">
+    </div>
+
+    @each(article in articles)
+    <div class="card" style="margin-top: 20px">
+      <div class="card-body">
+        <h5 class="card-title">{{ article.title }}</h5>
+        <p class="card-text">{{ article.body }}</p>
+      </div>
+    </div>
+    @endeach
+   </div>
+
+
+  {{ script('https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js') }}
+  {{ script('https://unpkg.com/@adonisjs/websocket-client@1.0.9/dist/Ws.browser.js') }}
+  {{ script('https://unpkg.com/jquery@3.3.1/dist/jquery.js') }}
+  {{ script('jwt-decode.min.js') }}
+  <script src="article.js"></script>
+</body>
+</html>
