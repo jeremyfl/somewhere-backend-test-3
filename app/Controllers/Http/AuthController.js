@@ -36,7 +36,7 @@ class AuthController {
     });
   }
 
-  async update({ auth, params, request, response }) {
+  async update({ auth, request, response }) {
     const userData = auth.user;
 
     const payload = request.only([

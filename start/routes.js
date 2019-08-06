@@ -35,4 +35,4 @@ Route.resource("users", "UserController")
 
 Route.resource("articles", "ArticleController")
   .validator(new Map([[["articles.store"], ["StoreArticle"]]]))
-  .middleware(["auth"]);
+  .middleware(new Map([[["store", "update", "destroy"], ["auth"]]]));
