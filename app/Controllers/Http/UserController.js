@@ -99,14 +99,13 @@ class UserController {
       payload.photo_url = `uploads/${profilePic.fileName}`;
     }
 
-    const user = await User.query()
+    await User.query()
       .where("id", params.id)
       .update({ email: payload.email, password: payload.password });
 
     await UserProfile.query()
       .where("id", params.id)
       .update({
-        user_id: user.id,
         full_name: payload.full_name,
         address: payload.address,
         photo_url: payload.photo_url

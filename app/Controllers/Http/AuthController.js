@@ -88,7 +88,7 @@ class AuthController {
     await ally.driver("facebook").redirect();
   }
 
-  async socialCallback({ auth, ally, response }) {
+  async socialCallback({ ally, response }) {
     try {
       const fbUser = await ally.driver("facebook").getUser();
 
@@ -105,14 +105,14 @@ class AuthController {
       });
 
       // search for existing user
-      const whereClause = {
-        email: fbUser.getEmail()
-      };
+      // const whereClause = {
+      //   email: fbUser.getEmail()
+      // };
 
-      const user = await User.findOrCreate(whereClause, userDetails);
-      await auth.login(user);
+      // const user = await User.findOrCreate(whereClause, userDetails);
+      // await auth.login(user);
 
-      return "Logged in";
+      // return "Logged in";
     } catch (error) {
       return "Unable to authenticate. Try again later";
     }

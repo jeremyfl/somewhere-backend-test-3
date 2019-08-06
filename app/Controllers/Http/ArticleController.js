@@ -6,7 +6,7 @@ const Article = use("App/Models/Article");
  */
 
 class ArticleController {
-  async live({ request, response, view }) {
+  async live({ view }) {
     const articles = await Article.query()
       .where("is_published", true)
       .orderBy("id", "desc")
@@ -49,7 +49,7 @@ class ArticleController {
     });
   }
 
-  async show({ params, request, response }) {
+  async show({ params, response }) {
     const articles = await Article.query()
       .where("id", params.id)
       .where("is_published", true)
