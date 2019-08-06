@@ -1,21 +1,56 @@
-# MKD Test - Blog API
+# MKD Test Blog API
 
-API for MKD test
+Coding test for Backend Position, Jeremiah Ferdinand.
 
-## Feature
-- Authentication
-- Websocket
+## Documentation
 
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
+https://www.getpostman.com/collections/bc0120fe2bb4a897162d
 
-### Migrations
+## Getting Started
 
-Run the following command to run startup migrations.
+### Prerequisites
 
-```js
-adonis migration:run
+- NPM and NodeJS
+- PM2
+- Adonis JS
+- MySQL
+
+### Installing
+
+### NPM & AdonisJS
+
+```
+brew install npm && brew install node
+```
+
+### AdonisJS
+
+```
+npm i -g @adonisjs/cli
+```
+
+### PM2
+
+```
+npm i -g pm2
+```
+
+### MySQL
+
+```
+brew install mysql
+```
+
+## Running the scheduler
+
+Directly run PM2 or run scheduler by
+
+```
+node ace run:scheduler
+```
+
+## Running the test
+
+```
+adonis test
 ```
