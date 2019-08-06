@@ -49,6 +49,11 @@ class AuthController {
         login_source: "facebook"
       };
 
+      // TODO:: Remove until it live
+      return response.send({
+        data: userDetails
+      });
+
       // search for existing user
       const whereClause = {
         email: fbUser.getEmail()
