@@ -1,5 +1,7 @@
 "use strict";
 const User = use("App/Models/User");
+const UserProfile = use("App/Models/UserProfile");
+const Helpers = use("Helpers");
 
 class AuthController {
   async login({ auth, request, response }) {
@@ -31,6 +33,54 @@ class AuthController {
         address: user.profile.address,
         photo_url: user.profile.photo_url
       })
+    });
+  }
+
+  async update({ auth, params, request, response }) {
+    const userData = auth.user;
+
+    const payload = request.only([
+      "email",
+      "username",
+      "full_name",
+      "address",
+      "password"
+    ]);
+
+    const profilePic = request.file("profile_pic", {
+      types: ["image"],
+      size: "2mb"
+    });
+
+    if (profilePic) {
+      await profilePic.move(Helpers.publicPath("uploads"), {
+        name: profilePic.clientName,
+        overwrite: true
+      });
+
+      if (!profilePic.moved()) {
+        return profilePic.error();
+      }
+
+      payload.photo_url = `uploads/${profilePic.fileName}`;
+    }
+
+    const user = await User.query()
+      .where("id", userData.id)
+      .update({ email: payload.email, password: payload.password });
+
+    await UserProfile.query()
+      .where("user_id", userData.id)
+      .update({
+        user_id: user.id,
+        full_name: payload.full_name,
+        address: payload.address,
+        photo_url: payload.photo_url
+      });
+
+    return response.status(201).send({
+      status: 201,
+      message: "Record updated"
     });
   }
 

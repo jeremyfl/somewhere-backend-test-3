@@ -24,6 +24,7 @@ Route.get("live", "ArticleController.live");
 
 Route.group(() => {
   Route.post("login", "AuthController.login");
+  Route.patch("profile", "AuthController.update");
   Route.get("facebook/login", "AuthController.socialLogin");
   Route.get("facebook/authenticated", "AuthController.socialCallback");
 }).prefix("auth");
