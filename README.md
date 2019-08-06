@@ -4,6 +4,12 @@ Coding test for Backend Position, Jeremiah Ferdinand.
 
 ## Documentation
 
+### Postman Documentation
+
+https://documenter.getpostman.com/view/2744985/SVYrrxyq
+
+### Postman Collection
+
 https://www.getpostman.com/collections/bc0120fe2bb4a897162d
 
 ## Getting Started
